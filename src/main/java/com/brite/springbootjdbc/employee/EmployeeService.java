@@ -25,10 +25,15 @@ public class EmployeeService {
     }
 
     protected List<Employee> getemployees(){
-
         return employeeRepo.getemployees();
 
     }
+
+    protected String updateEmployee(Employee employee){
+        return employeeRepo.updateEmploye(employee);
+    }
+
+
 
 
 

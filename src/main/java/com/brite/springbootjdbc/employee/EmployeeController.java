@@ -33,6 +33,17 @@ public class EmployeeController {
         return empService.getemployees();
     }
 
+    @PutMapping(path ="/update")
+    public @ResponseBody String updateEmployee(@RequestBody Employee employee){
+        return empService.updateEmployee(employee);
+    }
+
+
+    @PostMapping(path ="/newemp")
+    public @ResponseBody String addEmployee(@RequestBody Employee employee){
+        return  empService.addEmployee(employee);
+    }
+
 
 
 }

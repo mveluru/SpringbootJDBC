@@ -1,0 +1,18 @@
+server:
+  port:
+    8084
+  servlet:
+    context-path: /employee
+spring:
+  profiles:
+    active: dev
+  application:
+        name:SpringbootJDBC
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect

@@ -33,7 +33,9 @@ public class EmployeeService {
         return employeeRepo.updateEmploye(employee);
     }
 
-
+    protected String deleteEmployee(Integer id){
+        return employeeRepo.deleteEmployee(id);
+    }
 
 
 

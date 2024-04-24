@@ -1,6 +1,7 @@
 package com.brite.springbootjdbc.employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.slf4j.Logger;
@@ -31,9 +32,10 @@ public class EmployeeRepo {
         this.jdbcTemplate = new JdbcTemplate(datasource);
     }
 
-    protected Employee getEmployeebyId(Integer id) {
+    protected Employee getEmployeebyId(Integer id) throws EmptyResultDataAccessException {
         String sql = "Select id , name , department from employee where id =?";
         EmployeeMapper employeeMapper = new EmployeeMapper();
+
      return jdbcTemplate.queryForObject(sql,new Object[] {id},employeeMapper);
     }
 

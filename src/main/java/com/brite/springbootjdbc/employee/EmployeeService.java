@@ -2,6 +2,7 @@ package com.brite.springbootjdbc.employee;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +22,14 @@ public class EmployeeService {
     }
 
     protected  Employee findEmployeeById(Integer id){
-        return employeeRepo.getEmployeebyId(id);
+
+        try{
+           return employeeRepo.getEmployeebyId(id);
+        }catch (EmptyResultDataAccessException erda){
+            throw new EmployeeNotFoundException("Employee not found");
+        }
+
+        //return employeeRepo.getEmployeebyId(id);
     }
 
     protected List<Employee> getemployees(){

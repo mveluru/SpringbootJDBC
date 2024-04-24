@@ -1,6 +1,7 @@
 package com.brite.springbootjdbc.employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -39,7 +40,7 @@ public class EmployeeRepo {
      return jdbcTemplate.queryForObject(sql,new Object[] {id},employeeMapper);
     }
 
-    protected List<Employee> getemployees() {
+    protected List<Employee> getemployees() throws DataAccessException {
         String sql = "Select id , name , department from employee";
         return jdbcTemplate.query(sql,new EmployeeMapper());
 

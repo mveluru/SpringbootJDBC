@@ -2,6 +2,7 @@ package com.brite.springbootjdbc.employee;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +34,13 @@ public class EmployeeService {
     }
 
     protected List<Employee> getemployees(){
-        return employeeRepo.getemployees();
+
+        try{
+            return employeeRepo.getemployees();
+        }catch (DataAccessException dae){
+            throw new EmployeeNotFoundException("Employees not found or DB connection error"+dae.getMessage());
+        }
+       // return employeeRepo.getemployees();
 
     }
 
